@@ -10,7 +10,9 @@ const App = () => {
   return (
     <SafeAreaView>
       {/* <PostUploadScreen /> */}
-      <HomeScreen />
+      {/* <HomeScreen /> */}
+      {/* <ProfileScreen /> */}
+      <EditProfile />
     </SafeAreaView>
   );
 };
