@@ -8,9 +8,12 @@ import PostUploadScreen from './src/screens/PostUploadScreen';
 
 const App = () => {
   return (
-    <SafeAreaView>
-      {/* <PostUploadScreen /> */}
-      <HomeScreen />
+    <SafeAreaView style={{flex: 1}}>
+      <PostUploadScreen />
+      {/* <HomeScreen /> */}
+      {/* <CommentsScreen /> */}
+      {/* <ProfileScreen /> */}
+      {/* <EditProfile /> */}
     </SafeAreaView>
   );
 };

@@ -10,10 +10,12 @@ const Input = () => {
   return (
     <View
       style={{
+        flex: 1,
         flexDirection: 'row',
         padding: 20,
         borderTopColor: COLORS.LIGHT_GREY,
         borderTopWidth: 1,
+        minHeight: 180,
       }}>
       <Image
         source={{
@@ -39,7 +41,12 @@ const Input = () => {
       />
       <Text
         onPress={onPost}
-        style={{color: 'blue', position: 'absolute', right: 45, top: 35}}>
+        style={{
+          color: 'blue',
+          position: 'absolute',
+          right: 45,
+          top: 35,
+        }}>
         Post
       </Text>
     </View>

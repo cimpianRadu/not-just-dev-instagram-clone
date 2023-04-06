@@ -124,6 +124,7 @@ const styles = StyleSheet.create({
   page: {
     alignItems: 'center',
     padding: 10,
+    flex: 1,
   },
   avatar: {
     width: '30%',
@@ -144,7 +145,7 @@ const styles = StyleSheet.create({
     width: 75,
   },
   input: {
-    height: 30,
+    minHeight: 30,
     borderBottomWidth: 2,
   },
 });

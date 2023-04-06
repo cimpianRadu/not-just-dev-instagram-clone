@@ -43,10 +43,11 @@ const ProfileScreen = () => {
       data={user.posts}
       keyExtractor={item => item.id}
       numColumns={3}
+      style={{marginHorizontal: -1}}
       renderItem={({item}) => (
         <Image
           source={{uri: item.image || item.images[0]}}
-          style={{flex: 1, aspectRatio: 1, margin: 1, maxWidth: '33%'}}
+          style={{flex: 1, aspectRatio: 1, margin: 1, maxWidth: '33.33%'}}
         />
       )}
       showsVerticalScrollIndicator={false}

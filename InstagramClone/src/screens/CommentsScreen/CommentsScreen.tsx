@@ -6,11 +6,11 @@ import Input from './Input';
 
 const CommentsScreen = () => {
   return (
-    <View>
+    <View style={{backgroundColor: 'red'}}>
       <FlatList
         data={comments}
         renderItem={({item}) => <Comment comment={item} includeDetails />}
-        style={{padding: 10, height: 400}}
+        // style={{padding: 10, height: 800}}
       />
       <Input />
     </View>

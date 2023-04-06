@@ -10,7 +10,7 @@ import Comment from '../Comment';
 import {IPost} from '../../Models';
 import DoublePressable from '../DoublePressable';
 import Carousel from '../Carousel';
-// import VideoPlayer from '../VideoPlayer';
+import VideoPlayer from '../VideoPlayer';
 
 interface IPostProps {
   post: IPost;
@@ -42,7 +42,7 @@ const FeedPost = ({post, isVisible}: IPostProps) => {
   } else if (post.video) {
     content = (
       <DoublePressable onPress={onToggleLike}>
-        {/* <VideoPlayer uri={post.video} paused={!isVisible} /> */}
+        <VideoPlayer uri={post.video} paused={!isVisible} />
       </DoublePressable>
     );
   }
