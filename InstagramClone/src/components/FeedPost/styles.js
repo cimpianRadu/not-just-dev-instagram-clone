@@ -3,7 +3,9 @@ import COLORS from '../../theme/colors';
 import fonts from '../../theme/fonts';
 
 export default StyleSheet.create({
-  post: {},
+  post: {
+    backgroundColor: 'white',
+  },
   image: {
     width: '100%',
     aspectRatio: 1,
