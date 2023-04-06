@@ -1,5 +1,5 @@
-import React from 'react';
-import {View, Text, Image} from 'react-native';
+import React, {useState} from 'react';
+import {View, Text, Image, Pressable} from 'react-native';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import styles from './styles';
 import COLORS from '../../theme/colors';
@@ -11,6 +11,11 @@ interface ICommentProps {
 }
 
 const Comment = ({comment, includeDetails = false}: ICommentProps) => {
+  const [isLiked, setIsLiked] = useState(false);
+
+  function toggleLike() {
+    setIsLiked(prev => !prev);
+  }
   return (
     <View style={styles.comment}>
       {includeDetails && (
@@ -32,7 +37,13 @@ const Comment = ({comment, includeDetails = false}: ICommentProps) => {
           </View>
         )}
       </View>
-      <AntDesign name={'hearto'} style={styles.icon} color={COLORS.BLACK} />
+      <Pressable onPress={toggleLike} hitSlop={2}>
+        <AntDesign
+          name={isLiked ? 'heart' : 'hearto'}
+          style={styles.icon}
+          color={isLiked ? 'red' : COLORS.BLACK}
+        />
+      </Pressable>
     </View>
   );
 };
