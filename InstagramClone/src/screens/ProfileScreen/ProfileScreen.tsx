@@ -3,8 +3,15 @@ import {View, Text, StyleSheet, Image, FlatList} from 'react-native';
 import user from '../../assests/data/user.json';
 import fonts from '../../theme/fonts';
 import Button from '../../components/Button';
+import {useRoute, useNavigation} from '@react-navigation/native';
 
 const ProfileHeader = () => {
+  const route = useRoute();
+  const navigation = useNavigation();
+  const {
+    params: {userId},
+  } = route;
+
   return (
     <View style={styles.root}>
       <View style={styles.headerRow}>
@@ -57,9 +64,11 @@ const ProfileScreen = () => {
 
 const styles = StyleSheet.create({
   root: {
+    backgroundColor: 'white',
     padding: 10,
   },
   headerRow: {
+    backgroundColor: 'white',
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',

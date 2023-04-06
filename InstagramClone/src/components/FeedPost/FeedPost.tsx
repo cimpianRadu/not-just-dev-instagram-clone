@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Text, View, Image} from 'react-native';
+import {Text, View, Image, Pressable} from 'react-native';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import Feather from 'react-native-vector-icons/Feather';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -11,6 +11,7 @@ import {IPost} from '../../Models';
 import DoublePressable from '../DoublePressable';
 import Carousel from '../Carousel';
 import VideoPlayer from '../VideoPlayer';
+import {useNavigation} from '@react-navigation/native';
 
 interface IPostProps {
   post: IPost;
@@ -19,6 +20,11 @@ interface IPostProps {
 
 const FeedPost = ({post, isVisible}: IPostProps) => {
   const [isLike, setIsLike] = useState(false);
+  const navigation = useNavigation();
+
+  function navigateToUser() {
+    navigation.navigate('UserProfile', {userId: post.user.id});
+  }
 
   const onToggleLike = () => {
     setIsLike(v => !v);
@@ -49,13 +55,14 @@ const FeedPost = ({post, isVisible}: IPostProps) => {
   return (
     <View style={styles.post}>
       <View style={styles.header}>
-        <Image
-          source={{
-            uri: post.user.image,
-          }}
-          style={styles.userAvatar}
-        />
-
+        <Pressable onPress={navigateToUser}>
+          <Image
+            source={{
+              uri: post.user.image,
+            }}
+            style={styles.userAvatar}
+          />
+        </Pressable>
         <Text style={styles.userName}>{post.user.username}</Text>
         <Entypo
           name="dots-three-horizontal"

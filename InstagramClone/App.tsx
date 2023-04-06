@@ -6,16 +6,10 @@ import ProfileScreen from './src/screens/ProfileScreen';
 import EditProfile from './src/screens/EditProfile';
 import PostUploadScreen from './src/screens/PostUploadScreen';
 
+import Navigation from './src/navigation';
+
 const App = () => {
-  return (
-    <SafeAreaView style={{flex: 1}}>
-      <PostUploadScreen />
-      {/* <HomeScreen /> */}
-      {/* <CommentsScreen /> */}
-      {/* <ProfileScreen /> */}
-      {/* <EditProfile /> */}
-    </SafeAreaView>
-  );
+  return <Navigation />;
 };
 
 export default App;
