@@ -12,6 +12,7 @@ import DoublePressable from '../DoublePressable';
 import Carousel from '../Carousel';
 import VideoPlayer from '../VideoPlayer';
 import {useNavigation} from '@react-navigation/native';
+import {FeedNavigationProp} from '../../navigation/types';
 
 interface IPostProps {
   post: IPost;
@@ -20,10 +21,14 @@ interface IPostProps {
 
 const FeedPost = ({post, isVisible}: IPostProps) => {
   const [isLike, setIsLike] = useState(false);
-  const navigation = useNavigation();
+  const navigation = useNavigation<FeedNavigationProp>();
 
   function navigateToUser() {
     navigation.navigate('UserProfile', {userId: post.user.id});
+  }
+
+  function onNavigateToComments() {
+    navigation.navigate('Comments', {postId: post.id});
   }
 
   const onToggleLike = () => {
@@ -110,7 +115,7 @@ const FeedPost = ({post, isVisible}: IPostProps) => {
           return <Comment key={comment.id} comment={comment} />;
         })}
 
-        <Text>View all 16 commetns</Text>
+        <Text onPress={onNavigateToComments}>View all 16 commetns</Text>
 
         <Text>{post.createdAt}</Text>
       </View>

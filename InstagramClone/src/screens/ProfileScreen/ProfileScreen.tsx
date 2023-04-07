@@ -4,12 +4,23 @@ import user from '../../assests/data/user.json';
 import fonts from '../../theme/fonts';
 import Button from '../../components/Button';
 import {useRoute, useNavigation} from '@react-navigation/native';
+import {
+  MyProfileNavigationProp,
+  MyProfileRouteProp,
+  ProfileNavigationProp,
+  UserProfileNavigationProp,
+  UserProfileRouteProps,
+} from '../../navigation/types';
 
 const ProfileHeader = () => {
-  const route = useRoute();
-  const navigation = useNavigation();
+  const route = useRoute<UserProfileRouteProps | MyProfileRouteProp>();
+  const navigation = useNavigation<ProfileNavigationProp>();
 
   const userId = route?.params?.userId;
+
+  function onEditPress() {
+    navigation.navigate('EditProfile');
+  }
 
   return (
     <View style={styles.root}>
@@ -35,7 +46,7 @@ const ProfileHeader = () => {
       <Text>{user.bio}</Text>
 
       <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-        <Button text="Edit Profile" />
+        <Button onPress={onEditPress} text="Edit Profile" />
         <Button text="Whatever" />
       </View>
     </View>
@@ -43,6 +54,9 @@ const ProfileHeader = () => {
 };
 
 const ProfileScreen = () => {
+  const navigation = useNavigation<
+    UserProfileNavigationProp | MyProfileNavigationProp
+  >();
   return (
     <FlatList
       ListHeaderComponent={<ProfileHeader />}
