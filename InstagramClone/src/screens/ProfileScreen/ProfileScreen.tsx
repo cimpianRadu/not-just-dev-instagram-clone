@@ -8,9 +8,8 @@ import {useRoute, useNavigation} from '@react-navigation/native';
 const ProfileHeader = () => {
   const route = useRoute();
   const navigation = useNavigation();
-  const {
-    params: {userId},
-  } = route;
+
+  const userId = route?.params?.userId;
 
   return (
     <View style={styles.root}>
