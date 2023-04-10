@@ -1,0 +1,48 @@
+import {View, Text, Image, Pressable} from 'react-native';
+import React from 'react';
+import {IUser} from '../../Models';
+import {StyleSheet} from 'react-native';
+import {useNavigation} from '@react-navigation/native';
+
+interface IUserListItem {
+  user: IUser;
+}
+
+const UserListItem = ({user}: IUserListItem) => {
+  const navigation = useNavigation();
+  function goTouserScreen() {
+    navigation.navigate('UserProfile', {userId: user.id});
+  }
+  return (
+    <Pressable onPress={goTouserScreen} style={styles.root}>
+      <Image source={{uri: user.image}} style={styles.image} />
+      <View>
+        <Text style={styles.name}>{user.name}</Text>
+        <Text style={styles.username}>{user.username}</Text>
+      </View>
+    </Pressable>
+  );
+};
+
+const styles = StyleSheet.create({
+  image: {
+    width: 50,
+    aspectRatio: 1,
+    borderRadius: 25,
+    marginRight: 10,
+  },
+  root: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    padding: 10,
+  },
+  name: {
+    fontWeight: 'bold',
+    marginBottom: 5,
+  },
+  username: {
+    color: 'grey',
+  },
+});
+
+export default UserListItem;

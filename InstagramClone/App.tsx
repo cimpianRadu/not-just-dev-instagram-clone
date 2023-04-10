@@ -6,15 +6,14 @@ import ProfileScreen from './src/screens/ProfileScreen';
 import EditProfile from './src/screens/EditProfile';
 import PostUploadScreen from './src/screens/PostUploadScreen';
 
+import Navigation from './src/navigation';
+import {SafeAreaProvider} from 'react-native-safe-area-context';
+
 const App = () => {
   return (
-    <SafeAreaView style={{flex: 1}}>
-      <PostUploadScreen />
-      {/* <HomeScreen /> */}
-      {/* <CommentsScreen /> */}
-      {/* <ProfileScreen /> */}
-      {/* <EditProfile /> */}
-    </SafeAreaView>
+    <SafeAreaProvider>
+      <Navigation />
+    </SafeAreaProvider>
   );
 };
 

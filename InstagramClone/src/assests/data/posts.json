@@ -7,7 +7,7 @@
     "user": {
       "id": "u1",
       "image": "https://notjustdev-dummy.s3.us-east-2.amazonaws.com/avatars/1.jpg",
-      "username": "vadimnotjustdev"
+      "username": "gigidev"
     },
     "nofComments": 11,
     "nofLikes": 34,
@@ -17,7 +17,7 @@
         "comment": "Lorem ipsum dolor sit amet consectetur adipisicing elit. H",
         "user": {
           "id": "u1",
-          "username": "vadimnotjustdev"
+          "username": "hahdev"
         }
       },
       {
@@ -42,7 +42,7 @@
     "user": {
       "id": "u1",
       "image": "https://notjustdev-dummy.s3.us-east-2.amazonaws.com/avatars/1.jpg",
-      "username": "vadimnotjustdev"
+      "username": "thisuser"
     },
     "nofComments": 11,
     "nofLikes": 34,
