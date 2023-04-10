@@ -1,3 +1,4 @@
+import React from 'react';
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
 import HomeScreen from '../screens/HomeScreen';
 import UserSearchScreen from '../screens/UserSearchScreen/UserSearchScreen';
