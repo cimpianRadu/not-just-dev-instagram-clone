@@ -5,6 +5,7 @@ import BottomTabNavigator from './BottomTabNavigator';
 import CommentsScreen from '../screens/CommentsScreen';
 import {RootNavigatorParamList} from './types';
 import {SafeAreaView} from 'react-native-safe-area-context';
+import AuthStackNavigator from './AuthStackNavigator';
 
 const Stack = createNativeStackNavigator<RootNavigatorParamList>();
 
@@ -33,7 +34,12 @@ const Navigation = () => {
   return (
     <NavigationContainer linking={linking}>
       <SafeAreaView style={{flex: 1}}>
-        <Stack.Navigator initialRouteName="Home">
+        <Stack.Navigator initialRouteName="Auth">
+          <Stack.Screen
+            name="Auth"
+            component={AuthStackNavigator}
+            options={{headerShown: false}}
+          />
           <Stack.Screen
             name="Home"
             component={BottomTabNavigator}
