@@ -6,6 +6,8 @@ import CommentsScreen from '../screens/CommentsScreen';
 import {RootNavigatorParamList} from './types';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import AuthStackNavigator from './AuthStackNavigator';
+import {useAuthContext} from '../contexts/AuthContext';
+import {ActivityIndicator, View} from 'react-native';
 
 const Stack = createNativeStackNavigator<RootNavigatorParamList>();
 
@@ -31,21 +33,35 @@ const linking: LinkingOptions<RootNavigatorParamList> = {
 };
 
 const Navigation = () => {
+  const {user} = useAuthContext();
+
+  if (user === undefined) {
+    return (
+      <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+        <ActivityIndicator />
+      </View>
+    );
+  }
   return (
     <NavigationContainer linking={linking}>
       <SafeAreaView style={{flex: 1}}>
         <Stack.Navigator initialRouteName="Auth">
-          <Stack.Screen
-            name="Auth"
-            component={AuthStackNavigator}
-            options={{headerShown: false}}
-          />
-          <Stack.Screen
-            name="Home"
-            component={BottomTabNavigator}
-            options={{headerShown: false}}
-          />
-          <Stack.Screen name="Comments" component={CommentsScreen} />
+          {!user ? (
+            <Stack.Screen
+              name="Auth"
+              component={AuthStackNavigator}
+              options={{headerShown: false}}
+            />
+          ) : (
+            <>
+              <Stack.Screen
+                name="Home"
+                component={BottomTabNavigator}
+                options={{headerShown: false}}
+              />
+              <Stack.Screen name="Comments" component={CommentsScreen} />
+            </>
+          )}
         </Stack.Navigator>
       </SafeAreaView>
     </NavigationContainer>

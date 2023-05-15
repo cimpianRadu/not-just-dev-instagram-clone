@@ -11,14 +11,17 @@ import {
   UserProfileNavigationProp,
   UserProfileRouteProps,
 } from '../../navigation/types';
-import {useAuthenticator} from '@aws-amplify/ui-react-native';
+import {Auth} from 'aws-amplify';
+// import {useAuthenticator} from '@aws-amplify/ui-react-native';
 
 const ProfileHeader = () => {
   const route = useRoute<UserProfileRouteProps | MyProfileRouteProp>();
   const navigation = useNavigation<ProfileNavigationProp>();
-  const {signOut} = useAuthenticator();
-
   const userId = route?.params?.userId;
+
+  const signOut = async () => {
+    await Auth.signOut({global: true});
+  };
 
   function onEditPress() {
     navigation.navigate('EditProfile');
