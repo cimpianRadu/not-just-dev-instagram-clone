@@ -2,7 +2,17 @@
   "auth": {
     "InstagramClone": {
       "customAuth": false,
-      "dependsOn": [],
+      "dependsOn": [
+        {
+          "attributes": [
+            "Arn",
+            "Name"
+          ],
+          "category": "function",
+          "resourceName": "InstagramClonePostConfirmation",
+          "triggerProvider": "Cognito"
+        }
+      ],
       "frontendAuthConfig": {
         "mfaConfiguration": "OFF",
         "mfaTypes": [
@@ -21,7 +31,10 @@
           "EMAIL",
           "NAME"
         ],
-        "socialProviders": [],
+        "socialProviders": [
+          "FACEBOOK",
+          "GOOGLE"
+        ],
         "usernameAttributes": [],
         "verificationMechanisms": [
           "EMAIL"
@@ -29,6 +42,47 @@
       },
       "providerPlugin": "awscloudformation",
       "service": "Cognito"
+    }
+  },
+  "function": {
+    "InstagramClonePostConfirmation": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    }
+  },
+  "parameters": {
+    "AMPLIFY_auth_InstagramClone_facebookAppId": {
+      "usedBy": [
+        {
+          "category": "auth",
+          "resourceName": "InstagramClone"
+        }
+      ]
+    },
+    "AMPLIFY_auth_InstagramClone_googleClientId": {
+      "usedBy": [
+        {
+          "category": "auth",
+          "resourceName": "InstagramClone"
+        }
+      ]
+    },
+    "AMPLIFY_function_InstagramClonePostConfirmation_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "InstagramClonePostConfirmation"
+        }
+      ]
+    },
+    "AMPLIFY_function_InstagramClonePostConfirmation_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "InstagramClonePostConfirmation"
+        }
+      ]
     }
   }
 }
